@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 const Create = () => {
 
@@ -6,6 +7,7 @@ const Create = () => {
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('mario');
   const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +21,8 @@ const Create = () => {
       body: JSON.stringify(blog)
     }).then(() => {
         setIsLoading(false);
-        console.log('new blog added')
+        //history.go(-1)
+        history.push('/');
     });
   }
 
